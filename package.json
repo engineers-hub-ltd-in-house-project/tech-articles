@@ -1,0 +1,33 @@
+{
+  "name": "tech-articles",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Source-of-truth technical articles with per-medium build pipeline (note / Zenn / tech note)",
+  "type": "module",
+  "scripts": {
+    "build": "dotenvx run --quiet --ignore=MISSING_ENV_FILE -- tsx src/build/build.ts",
+    "new": "dotenvx run --quiet --ignore=MISSING_ENV_FILE -- tsx src/build/new.ts",
+    "lint:md": "markdownlint-cli2 \"src/articles/**/*.md\"",
+    "lint:ts": "biome check src/build",
+    "format": "biome check --write src/build && prettier --write \"src/articles/**/*.md\"",
+    "postinstall": "lefthook install || true"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.11",
+    "@dotenvx/dotenvx": "^1.61.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.6.0",
+    "commander": "^14.0.3",
+    "js-yaml": "^4.1.1",
+    "lefthook": "^2.1.5",
+    "markdownlint-cli2": "^0.22.0",
+    "prettier": "^3.8.2",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "unified": "^11.0.5"
+  }
+}

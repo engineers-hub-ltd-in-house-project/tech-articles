@@ -1,0 +1,14 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome:
+      glob: "src/build/**/*.{ts,json}"
+      run: pnpm exec biome check --write --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+    prettier-md:
+      glob: "src/articles/**/*.md"
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true
+    markdownlint:
+      glob: "src/articles/**/*.md"
+      run: pnpm exec markdownlint-cli2 {staged_files}

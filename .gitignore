@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# dotenvx: commit encrypted .env files, ignore only the keys
+.env.keys
