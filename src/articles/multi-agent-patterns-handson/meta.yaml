@@ -1,0 +1,18 @@
+title: マルチエージェントは「複数立ち上げ」とどう違うのか ─ 5パターンを Python で動かして理解する
+slug: multi-agent-patterns-handson
+emoji: 🧩
+type: tech
+topics:
+  - claudecode
+  - ai
+  - anthropic
+  - python
+  - multiagent
+published: false
+paid: false
+note:
+  magazine: null
+  price: null
+zenn:
+  publication_name: null
+  includePaywalled: false
