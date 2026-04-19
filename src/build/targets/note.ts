@@ -2,7 +2,8 @@ import { splitPaywall } from "../lib/paywall.js";
 import type { Article } from "../types.js";
 
 // note does not support frontmatter — title/tags are set in the web UI.
-// We emit the title as a leading h1 for reference, then the body.
+// If the body already starts with an h1 we keep it as-is; otherwise we prepend
+// meta.title as a leading h1 so the author has a reference of the intended title.
 // Paywall is represented by a horizontal rule comment block note editors can
 // map to the "here is the paid boundary" marker manually.
 //
@@ -12,7 +13,8 @@ import type { Article } from "../types.js";
 // before emitting. Runs only over the note output — source is untouched.
 export function renderNote(article: Article): string {
   const { free, paid } = splitPaywall(article.body);
-  const header = `# ${article.meta.title}\n\n`;
+  const bodyHasH1 = /^# /.test(free);
+  const header = bodyHasH1 ? "" : `# ${article.meta.title}\n\n`;
   const freeText = stripTables(free).trimEnd();
   if (paid === null) {
     return `${header}${freeText}\n`;
