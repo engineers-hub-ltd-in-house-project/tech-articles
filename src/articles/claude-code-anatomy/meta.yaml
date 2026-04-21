@@ -1,0 +1,18 @@
+title: Claude Code を解体してみる ── バイナリ、エージェントループ、通信層、その構造の観察記
+slug: claude-code-anatomy
+emoji: 🔬
+type: tech
+topics:
+  - claudecode
+  - ai
+  - anthropic
+  - reverseengineering
+  - internals
+published: false
+paid: false
+note:
+  magazine: null
+  price: null
+zenn:
+  publication_name: null
+  includePaywalled: false
