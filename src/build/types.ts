@@ -1,4 +1,4 @@
-export type Target = "note" | "zenn" | "tech-note";
+export type Target = "note" | "zenn" | "tech-note" | "x";
 
 export interface ArticleMeta {
   title: string;
@@ -14,6 +14,9 @@ export interface ArticleMeta {
   };
   zenn?: {
     publication_name?: string | null;
+    includePaywalled?: boolean;
+  };
+  x?: {
     includePaywalled?: boolean;
   };
 }

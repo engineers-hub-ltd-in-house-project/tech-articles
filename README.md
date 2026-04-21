@@ -1,6 +1,6 @@
 # tech-articles
 
-技術記事の生原稿を single source of truth として管理し、媒体ごと（note / Zenn / 自社 tech note）に変換して出力するリポジトリ。
+技術記事の生原稿を single source of truth として管理し、媒体ごと（note / Zenn / 自社 tech note / X Articles）に変換して出力するリポジトリ。
 
 ## ディレクトリ構成
 
@@ -15,7 +15,8 @@ tech-articles/
 └── dist/               ビルド成果物（git 管理外）
     ├── note/<slug>.md
     ├── zenn/<slug>.md
-    └── tech-note/<slug>.md
+    ├── tech-note/<slug>.md
+    └── x/<slug>.md
 ```
 
 ## 使い方
@@ -33,7 +34,7 @@ pnpm new my-slug
 ```
 pnpm build                 全記事を全媒体向けに出力
 pnpm build my-slug         特定記事のみ
-pnpm build my-slug --target note
+pnpm build my-slug --target note  # note|zenn|tech-note|x
 ```
 
 ## 生原稿の書き方
@@ -59,6 +60,8 @@ note:
 zenn:
   publication_name: null
   includePaywalled: false  # true にすると Zenn 出力にも paywall 以降を含める
+x:
+  includePaywalled: false  # true にすると X Articles 出力にも paywall 以降を含める
 ```
 
 ## 媒体別の変換ルール
@@ -75,6 +78,12 @@ zenn:
 
 ### tech note（自社開発中）
 - 仕様未確定。現状はパススルー出力のみ
+
+### X Articles
+- X Premium+ の長文投稿機能（x.com/compose/articles）向け。フロントマターは出力しない（タイトルは X 投稿画面で設定する）
+- note と同じく、本文冒頭に h1 が無ければ meta.title を h1 として前置する
+- `<!-- paywall -->` 以降は既定で出力しない（`x.includePaywalled: true` で出力）
+- GFM テーブルは現状パススルー（X Articles のテーブル対応を確認したうえで必要なら note の変換ロジックを共通化する）
 
 ## 開発
 
