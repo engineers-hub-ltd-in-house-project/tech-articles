@@ -1,0 +1,20 @@
+title: サブエージェントは「速さ」のためにあるのではない ── Claude Agent SDK の設計判断を、コンテキスト圧縮という視点から読み直す
+slug: sub-agents-and-agent-teams
+emoji: 🧵
+type: tech
+topics:
+  - claudecode
+  - ai
+  - anthropic
+  - agent
+  - multiagent
+published: false
+paid: false
+note:
+  magazine: null
+  price: null
+zenn:
+  publication_name: null
+  includePaywalled: false
+x:
+  includePaywalled: false
