@@ -18,3 +18,17 @@ zenn:
   includePaywalled: false
 x:
   includePaywalled: false
+substack:
+  includePaywalled: false
+  splitPoints:
+    - "### 2. Anthropic が示した 5 パターンを原典で確認する"
+    - "### 3. 役割で分けると、なぜサブエージェントは壊れるのか"
+    - "## 第二部　Anthropic と Cognition は本当に対立しているのか"
+    - "### 5. サブエージェントの本当の役割は、速さではなく圧縮にある"
+    - "### 6. 等トークン予算で比較したら、差は本当に残るのか"
+    - "## 第三部　Claude Agent SDK の現在地"
+    - "### 8. Claude Agent SDK の最新仕様を、わたしの環境で確かめる"
+    - "### 9. Skills、Slash Commands、Subagent を使い分ける三つの軸"
+    - "### 10. Hooks と MCP の使いどころ"
+    - "## 第四部　設計判断に戻る"
+    - "### 12. 結び ── 設計開始前に、わたしがいつも立ち止まる三つの問い"

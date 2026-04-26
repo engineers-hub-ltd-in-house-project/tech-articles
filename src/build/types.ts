@@ -1,4 +1,4 @@
-export type Target = "note" | "zenn" | "tech-note" | "x";
+export type Target = "note" | "zenn" | "tech-note" | "x" | "substack";
 
 export interface ArticleMeta {
   title: string;
@@ -18,6 +18,10 @@ export interface ArticleMeta {
   };
   x?: {
     includePaywalled?: boolean;
+  };
+  substack?: {
+    includePaywalled?: boolean;
+    splitPoints?: string[];
   };
 }
 

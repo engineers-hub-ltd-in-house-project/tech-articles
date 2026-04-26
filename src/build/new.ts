@@ -25,6 +25,9 @@ note:
 zenn:
   publication_name: null
   includePaywalled: false
+substack:
+  includePaywalled: false
+  splitPoints: []
 `;
   writeFileSync(join(dir, "meta.yaml"), meta);
 
