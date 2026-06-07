@@ -1,0 +1,27 @@
+title: Claude Code に毎朝同じ指示を貼り付けるのに飽きた ── Hermes Agent を Lightsail に実際に導入してみた
+slug: hermes-agent-on-lightsail
+emoji: 🛰️
+type: idea
+topics:
+  - hermes
+  - lightsail
+  - aws
+  - agent
+  - claudecode
+published: false
+paid: true
+note:
+  magazine: null
+  price: 9800
+zenn:
+  publication_name: null
+  includePaywalled: false
+x:
+  includePaywalled: false
+substack:
+  includePaywalled: true
+  splitPoints:
+    - "## 4. インストールと systemd 化"
+    - "## 6. 配信先を 6 つ並べてみる"
+    - "## 8. コスト戦略"
+    - "## 10. 既知バグと回避"
