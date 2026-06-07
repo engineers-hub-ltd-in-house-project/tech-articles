@@ -15,6 +15,19 @@ import type { Article } from "../types.js";
 // note does not render inline code spans (`like this`) — backticks are shown
 // literally. Fenced code blocks ARE supported, so we preserve those and only
 // strip inline backticks.
+//
+// note's editor auto-linkifies anything that looks like `<word>.<TLD>` in body
+// text — so `SKILL.md`, `install.sh` and bare references like CLAUDE.md become
+// clickable (and broken) links after we strip the surrounding backticks. We
+// defang the dot in known file-extension/TLD overlaps by swapping it for a
+// full-width period (．, U+FF0E). Visually almost identical, but the
+// auto-linker no longer matches the pattern. This is applied to the entire
+// body (after fenced code blocks are protected) so it covers both
+// backtick-wrapped and bare references. The defang list is intentionally
+// narrow — only `.md` and `.sh`, which are essentially always file extensions
+// in tech writing. `.io / .ai / .app / .dev / .co` are left alone because
+// they show up in real domains we want auto-linked (claude.ai, openrouter.ai,
+// agentskills.io, etc.).
 export function renderNote(article: Article): string {
   const { free, paid } = splitPaywall(article.body);
   const bodyHasH1 = /^# /.test(free);
@@ -46,6 +59,11 @@ function transformBody(input: string): string {
 
   // Inline backticks → plain text (note does not render inline code spans).
   text = text.replace(INLINE_CODE_RE, (_m, content: string) => content);
+
+  // Defang file-extension/TLD overlaps so note's auto-linker leaves them alone.
+  // Runs over the whole (non-fenced) body to catch both backtick-stripped and
+  // bare references like SKILL.md, CLAUDE.md, install.sh.
+  text = text.replace(/\.(md|sh)\b/gi, "．$1");
 
   // Restore fenced blocks unchanged.
   return text.replace(FENCE_SENTINEL_RE, (_m, idx: string) => fences[Number(idx)] ?? "");
